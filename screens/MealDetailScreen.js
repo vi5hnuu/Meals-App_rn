@@ -6,16 +6,18 @@ import Step from '../components/Step';
 import Ingredient from '../components/Ingredient';
 import { useContext, useLayoutEffect } from 'react';
 import FavouriteButton from '../components/FavouriteButton';
-import { favContext } from './../store/context/favContext'
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { actions as favActions } from './../store/redux-context/favSlice'
 
 export default function MealDetailScreen({ route, navigation }) {
-  const favctx = useContext(favContext)
+  const state = useSelector((state) => state.favMealsR)
+  const dispatch = useDispatch()
   const mid = route.params.mealId
-  const isFav = favctx.ids.includes(mid)
-  const meal = MEALS.find((meal) => meal.id = mid)
-
+  const isFav = state.ids.includes(mid)
+  const meal = MEALS.find((meal) => meal.id === mid)
   function onToggleFavHandler() {
-    isFav ? favctx.removeFavorite(mid) : favctx.addFavorite(mid);
+    isFav ? dispatch(favActions.removeFavorite({ id: mid })) :
+      dispatch(favActions.addFavorite({ id: mid }));
   }
 
   useLayoutEffect(() => {
@@ -49,7 +51,7 @@ export default function MealDetailScreen({ route, navigation }) {
         <Text style={styles.ingredientsTitle}>Ingredients</Text>
         <View style={styles.ingredients}>
           {meal.ingredients.map((ingredient) => {
-            return <Ingredient key={ingredient} ingredient={ingredient} />
+            return <Ingredient ingredient={ingredient} />
           })}
         </View>
       </View>

@@ -10,6 +10,7 @@ export default function MealsOverviewScreen({ route, navigation }) {
     return meal.categoryIds.includes(cId)
   })
 
+
   useLayoutEffect(() => {//concurrently while rendering the component
     const categoryTitle = CATEGORIES.find((category) => category.id == cId).title
     navigation.setOptions({

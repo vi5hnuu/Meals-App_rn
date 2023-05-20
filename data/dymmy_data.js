@@ -17,7 +17,7 @@ export const CATEGORIES = [
 
 export const MEALS = [
   new Meal(
-    'm1',
+    'm11',
     ['c1', 'c2'],
     'Spaghetti with Tomato Sauce',
     'affordable',
@@ -48,7 +48,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm2',
+    'm12',
     ['c2'],
     'Toast Hawaii',
     'affordable',
@@ -74,7 +74,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm3',
+    'm13',
     ['c3'],
     'Classic Hamburger',
     'pricey',
@@ -103,7 +103,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm4',
+    'm14',
     ['c4'],
     'Wiener Schnitzel',
     'luxurious',
@@ -136,7 +136,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm02',
+    'm15',
     ['c2', 'c5', 'c10'],
     'Salad with Smoked Salmon',
     'luxurious',
@@ -168,7 +168,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm6',
+    'm16',
     ['c6', 'c10'],
     'Delicious Orange Mousse',
     'affordable',
@@ -201,7 +201,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm7',
+    'm17',
     ['c7'],
     'Pancakes',
     'affordable',
@@ -230,7 +230,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm8',
+    'm18',
     ['c8'],
     'Creamy Indian Chicken Curry',
     'pricey',
@@ -261,7 +261,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm9',
+    'm19',
     ['c9'],
     'Chocolate Souffle',
     'affordable',
@@ -307,7 +307,7 @@ export const MEALS = [
     false
   ),
   new Meal(
-    'm10',
+    'm20',
     ['c2', 'c5', 'c10'],
     'Asparagus Salad with Cherry Tomatoes',
     'luxurious',

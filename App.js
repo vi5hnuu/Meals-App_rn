@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import CategoryScreen from './screens/CategoryScreen';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -10,6 +10,8 @@ import MealDetailScreen from './screens/MealDetailScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import FavouriteScreen from './screens/FavouriteScreen';
 import FavouriteContextProvider from './store/context/favContext';
+import { Provider } from 'react-redux';
+import { store } from './store/redux-context/store';
 
 const Stack = createNativeStackNavigator()
 const drawer = createDrawerNavigator()
@@ -39,7 +41,7 @@ function DrawerNavigator() {
   </drawer.Navigator>
 }
 export default function App() {
-  return <FavouriteContextProvider>
+  return <Provider store={store}>
     <NavigationContainer style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
         <Stack.Navigator
@@ -67,7 +69,7 @@ export default function App() {
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>
-  </FavouriteContextProvider>
+  </Provider>
 }
 
 const styles = StyleSheet.create({
