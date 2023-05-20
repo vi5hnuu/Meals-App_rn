@@ -4,21 +4,30 @@ import MealInfo from '../components/MealInfo'
 import MealFeature from '../components/MealFeature';
 import Step from '../components/Step';
 import Ingredient from '../components/Ingredient';
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import FavouriteButton from '../components/FavouriteButton';
+import { favContext } from './../store/context/favContext'
 
 export default function MealDetailScreen({ route, navigation }) {
+  const favctx = useContext(favContext)
   const mid = route.params.mealId
+  const isFav = favctx.ids.includes(mid)
   const meal = MEALS.find((meal) => meal.id = mid)
 
+  function onToggleFavHandler() {
+    isFav ? favctx.removeFavorite(mid) : favctx.addFavorite(mid);
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <FavouriteButton />
+        return <FavouriteButton
+          isFav={isFav}
+          onPress={onToggleFavHandler} />
       }
     })
   }, [navigation])
+
   return (
     <ScrollView style={styles.screen}>
       <Text style={styles.title}>{meal.title}</Text>

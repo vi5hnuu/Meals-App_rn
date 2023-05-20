@@ -9,6 +9,7 @@ import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailScreen from './screens/MealDetailScreen';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import FavouriteScreen from './screens/FavouriteScreen';
+import FavouriteContextProvider from './store/context/favContext';
 
 const Stack = createNativeStackNavigator()
 const drawer = createDrawerNavigator()
@@ -38,34 +39,35 @@ function DrawerNavigator() {
   </drawer.Navigator>
 }
 export default function App() {
-  return <NavigationContainer style={{ flex: 1 }}>
-    <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: { backgroundColor: '#0077B6' },
-          contentStyle: {
-            backgroundColor: '#CAF0F8',
-          }
-        }}>
-        <Stack.Screen
-          name='MealsCategories'
-          component={DrawerNavigator}
-          options={{
-            headerShown: false,
-          }} />
-        <Stack.Screen
-          name='MealsOverview'
-          component={MealsOverviewScreen}
-        />
-        <Stack.Screen
-          name='MealDetail'
-          component={MealDetailScreen}
-          options={{ title: 'About the meal' }}
-        />
-      </Stack.Navigator>
-    </SafeAreaView>
-  </NavigationContainer>
-
+  return <FavouriteContextProvider>
+    <NavigationContainer style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#0077B6' },
+            contentStyle: {
+              backgroundColor: '#CAF0F8',
+            }
+          }}>
+          <Stack.Screen
+            name='MealsCategories'
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }} />
+          <Stack.Screen
+            name='MealsOverview'
+            component={MealsOverviewScreen}
+          />
+          <Stack.Screen
+            name='MealDetail'
+            component={MealDetailScreen}
+            options={{ title: 'About the meal' }}
+          />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </NavigationContainer>
+  </FavouriteContextProvider>
 }
 
 const styles = StyleSheet.create({

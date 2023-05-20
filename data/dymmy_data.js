@@ -136,7 +136,7 @@ export const MEALS = [
   ),
 
   new Meal(
-    'm5',
+    'm02',
     ['c2', 'c5', 'c10'],
     'Salad with Smoked Salmon',
     'luxurious',

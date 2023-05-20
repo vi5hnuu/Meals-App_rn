@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { CATEGORIES, MEALS } from './../data/dymmy_data'
 import MealItem from '../components/MealItem'
 import { useEffect, useLayoutEffect } from 'react'
+import MealsList from '../components/MealsList'
 
 export default function MealsOverviewScreen({ route, navigation }) {
   const cId = route.params.categoryId
@@ -16,18 +17,5 @@ export default function MealsOverviewScreen({ route, navigation }) {
     })
   }, [cId, navigation])
 
-  return <View style={styles.mealsContainer}>
-    <FlatList
-      data={meals}
-      keyExtractor={(mealItem) => mealItem.id}
-      renderItem={(mealWrapper) => {
-        return <MealItem meal={mealWrapper.item} />
-      }} />
-  </View>
+  return <MealsList meals={meals} />
 }
-
-const styles = StyleSheet.create({
-  mealsContainer: {
-    margin: 5,
-  }
-})

@@ -2,11 +2,12 @@ import { View, Text, Pressable } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
 
-export default function FavouriteButton() {
-  const [pressed, setPressed] = useState(false)
+export default function FavouriteButton({ isFav, onPress }) {
+  const [pressed, setPressed] = useState(isFav)
 
   function togglePressHandler() {
-    setPressed((pressed) => !pressed)
+    setPressed((pressed) => !pressed);
+    onPress()
   }
   return <Pressable
     onPress={togglePressHandler}>
